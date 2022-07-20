@@ -1,20 +1,51 @@
-.flex-container
-{
-   display:flex ;
-   justify-content: center;
-   margin-top: 50px;
+.flex-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
 }
-div > label{
-    font-weight: bold;
+
+div>label {
+  font-weight: bold;
 }
-.btn{
-  width:150px;
+
+.btn {
+  width: 150px;
 }
-.subHeading-design{
+
+.subHeading-design {
   /* color: #27A2F3; */
   /* color: #1196EF; */
-  color:#329DE5;
+  color: #329DE5;
   font-weight: lighter;
   font-family: Arial;
   font-size: large;
+}
+
+.hiddenFormContent {
+  display: none;
+}
+
+.paraStyle {
+  font-size: medium;
+}
+
+.headingStyle {
+  font-weight: bolder;
+}
+
+@media print {
+  input[type=text] {
+    display: inline-block;
+    border: none;
+  }
+
+  .hiddenFormContent {
+    display: inline-block;
+  }
+
+  input[type=date],
+  button {
+    display: none;
+    border: none;
+  }
 }

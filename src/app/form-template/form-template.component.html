@@ -3,7 +3,7 @@
     <!-- Bootstrap Font Icon CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
-<div id="printIt">
+<div class="printIt">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -12,6 +12,19 @@
         </div>
     </nav>
     <div class="container-fluid mt-3">
+        <div class="hiddenFormContent">
+            <div class="row">
+                <div class="col-lg-4 offset-lg-1">
+                    <h2 class="headingStyle">Full Name</h2>
+                    <p class="paraStyle">Profession (e.g. Front End Developer)</p>
+                    <p>[Candidate’s name] is a passionate [primary skill] and a [secondary skill] enthusiast,
+                        having gained experience in both [primary domain] and [secondary domain] over
+                        a span of [number] years. He has pursued his [name of degree/diploma] in [subject of
+                        specialization]
+                        and is currently working as a [designation] at Coditas.</p>
+                </div>
+            </div>
+        </div>
         <form class="form-horizontal">
             <div class="row">
                 <div class="col-lg-4 offset-lg-1 subHeading-design">Key Skills
@@ -21,26 +34,31 @@
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="fullName">Full Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="fullName" placeholder="Enter Full Name" formControlName="fullName">
+                            <input type="text" class="form-control" id="fullName" placeholder="Enter Full Name"
+                                formControlName="fullName">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="profession">Profession</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="profession" placeholder="Enter Profession" formControlName="profession">
+                            <input type="text" class="form-control" id="profession" placeholder="Enter Profession"
+                                formControlName="profession">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-6" for="profileSummary">Profile Summary</label>
                         <div class="col-lg-10">
-                            <textarea type="text" class="form-control" id="profileSummary" placeholder="" formControlName="profileSummary"></textarea>
+                            <textarea type="text" class="form-control" id="profileSummary" placeholder=""
+                                formControlName="profileSummary"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-lg-8" for="programmingLangFromework">Programming language/Framework</label>
+                        <label class="control-label col-lg-8" for="programmingLangFromework">Programming
+                            language/Framework</label>
                         <div class="col-lg-10">
                             <input type="text" class="form-control" id="programmingLangFromework"
-                                placeholder="Name of known language/Framework" formControlName="programmingLangFromework">
+                                placeholder="Name of known language/Framework"
+                                formControlName="programmingLangFromework">
                         </div>
                     </div>
                     <div class="form-group">
@@ -82,13 +100,15 @@
                     <div class="form-group">
                         <label class="control-label col-lg-4" for="projectNameOne">Project 1 Name</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="projectNameOne" placeholder="Project worked on" formControlName="projectNameOne">
+                            <input type="text" class="form-control" id="projectNameOne" placeholder="Project worked on"
+                                formControlName="projectNameOne">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-4" for="roleInProjectOne">Role in the Project</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="roleInProjectOne" placeholder="" formControlName="roleInProjectOne">
+                            <input type="text" class="form-control" id="roleInProjectOne" placeholder=""
+                                formControlName="roleInProjectOne">
                         </div>
                     </div>
                     <div class="form-group">
@@ -102,13 +122,15 @@
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="projectNameTwo">Project 2 Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="projectNameTwo" placeholder="Project worked on" formControlName="projectNameTwo">
+                            <input type="text" class="form-control" id="projectNameTwo" placeholder="Project worked on"
+                                formControlName="projectNameTwo">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-4" for="roleInProjectTwo">Role in the Project</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="roleInProjectTwo" placeholder="" formControlName="roleInProjectTwo">
+                            <input type="text" class="form-control" id="roleInProjectTwo" placeholder=""
+                                formControlName="roleInProjectTwo">
                         </div>
                     </div>
                     <div class="form-group">
@@ -128,7 +150,8 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label class="control-label col-lg-6" for="lastQualificationName">Name of last qualification</label>
+                        <label class="control-label col-lg-6" for="lastQualificationName">Name of last
+                            qualification</label>
                         <div class="col-lg-10">
                             <input type="text" class="form-control" id="lastQualificationName"
                                 placeholder="e.g Bachelor of Engineering" formControlName="lastQualificationName">
@@ -137,13 +160,15 @@
                     <div class="form-group">
                         <label class="control-label col-sm-6" for="nameOfInstitution">Name of Institution</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="nameOfInstitution" placeholder="" formControlName="nameOfInstitution">
+                            <input type="text" class="form-control" id="nameOfInstitution" placeholder=""
+                                formControlName="nameOfInstitution">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-6" for="yearOfPassing">Year of Passing</label>
                         <div class="col-lg-10">
-                            <input type="date" class="form-control" id="yearOfPassing" placeholder="DD/MM/YYYY" formControlName="yearOfPassing">
+                            <input type="date" class="form-control" id="yearOfPassing" placeholder="DD/MM/YYYY"
+                                formControlName="yearOfPassing">
                         </div>
                     </div>
                 </div>

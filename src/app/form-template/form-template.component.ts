@@ -13,7 +13,6 @@ export class FormTemplateComponent implements OnInit {
   onPrint()
   {
     console.log("print button clicked");
-    // var printOutContent = document.getElementById('printIt')?.innerHTML
     window.print();
   }
 
