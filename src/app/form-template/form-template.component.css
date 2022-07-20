@@ -10,3 +10,11 @@ div > label{
 .btn{
   width:150px;
 }
+.subHeading-design{
+  /* color: #27A2F3; */
+  /* color: #1196EF; */
+  color:#329DE5;
+  font-weight: lighter;
+  font-family: Arial;
+  font-size: large;
+}

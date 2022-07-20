@@ -1,4 +1,9 @@
-<div>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+<div id="printIt">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -9,109 +14,108 @@
     <div class="container-fluid mt-3">
         <form class="form-horizontal">
             <div class="row">
-                <div class="col-lg-4 offset-lg-1">Key Skills
-                    <i class="bi bi-bag-check-fill"></i>
+                <div class="col-lg-4 offset-lg-1 subHeading-design">Key Skills
+                    <i class="bi bi-bookmark-fill"></i>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="fullName">Full Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="fullName" placeholder="Enter Full Name">
+                            <input type="text" class="form-control" id="fullName" placeholder="Enter Full Name" formControlName="fullName">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="profession">Profession</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="profession" placeholder="Enter Profession">
+                            <input type="text" class="form-control" id="profession" placeholder="Enter Profession" formControlName="profession">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-6" for="profileSummary">Profile Summary</label>
                         <div class="col-lg-10">
-                            <textarea type="text" class="form-control" id="profileSummary" placeholder=""></textarea>
+                            <textarea type="text" class="form-control" id="profileSummary" placeholder="" formControlName="profileSummary"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-6" for="programmingLangFromework">Programming
-                            Language/Framework</label>
-                        <div class="col-sm-10">
+                        <label class="control-label col-lg-8" for="programmingLangFromework">Programming language/Framework</label>
+                        <div class="col-lg-10">
                             <input type="text" class="form-control" id="programmingLangFromework"
-                                placeholder="Name of known language/Framework">
+                                placeholder="Name of known language/Framework" formControlName="programmingLangFromework">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-6" for="databaseName">Version Control Systems</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="databaseName"
-                                placeholder="Name of software Systems">
+                        <label class="control-label col-lg-6" for="versionControlName">Version Control Systems</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="versionControlName"
+                                placeholder="Name of software Systems" formControlName="versionControlName">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-4" for="databaseName">Database</label>
-                        <div class="col-sm-10">
+                        <label class="control-label col-lg-4" for="databaseName">Database</label>
+                        <div class="col-lg-10">
                             <input type="text" class="form-control" id="databaseName"
-                                placeholder="Name of technologies worked with">
+                                placeholder="Name of technologies worked with" formControlName="databaseName">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-4" for="databaseName">Cloud Technologies</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="databaseName"
-                                placeholder="Name of technologies worked on">
+                        <label class="control-label col-lg-4" for="cloudTechnologiesName">Cloud Technologies</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="cloudTechnologiesName"
+                                placeholder="Name of technologies worked on" formControlName="cloudTechnologiesName">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-4" for="databaseName">Operating Systems</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="databaseName"
-                                placeholder="Names of systems worked on">
+                        <label class="control-label col-lg-4" for="operatingSystemName">Operating Systems</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="operatingSystemName"
+                                placeholder="Names of systems worked on" formControlName="operatingSystemName">
                         </div>
                     </div>
                 </div>
             </div>
             <hr>
             <div class="row">
-                <div class="col-lg-4 offset-lg-1">Experience
+                <div class="col-lg-4 offset-lg-1 subHeading-design">Experience
                     <i class="bi bi-bag-check-fill"></i>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label class="control-label col-sm-4" for="projectNameOne">Project 1 Name</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="projectNameOne" placeholder="Project worked on">
+                        <label class="control-label col-lg-4" for="projectNameOne">Project 1 Name</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="projectNameOne" placeholder="Project worked on" formControlName="projectNameOne">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-4" for="roleInProjectOne">Role in the Project</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="roleInProjectOne" placeholder="">
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="roleInProjectOne" placeholder="" formControlName="roleInProjectOne">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-8" for="projOneDuration">Duration</label>
-                        <div class="col-sm-10">
-                            From <input type="date" id="projOneDurationFrom">
-                            To <input type="date" id="projOneDurationTo">
+                        <label class="control-label col-lg-8" for="projOneDuration">Duration</label>
+                        <div class="col-lg-10">
+                            From <input type="date" id="projOneDurationFrom" formControlName="projOneDurationFrom">
+                            To <input type="date" id="projOneDurationTo" formControlName="projOneDurationTo">
                             <div></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="projectNameTwo">Project 2 Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="projectNameTwo" placeholder="Project worked on">
+                            <input type="text" class="form-control" id="projectNameTwo" placeholder="Project worked on" formControlName="projectNameTwo">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-4" for="roleInProjectTwo">Role in the Project</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="roleInProjectTwo" placeholder="">
+                            <input type="text" class="form-control" id="roleInProjectTwo" placeholder="" formControlName="roleInProjectTwo">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-8" for="projTwoDuration">Duration</label>
-                        <div class="col-sm-10">
-                            From <input type="date" id="projTwoDurationFrom">
-                            To <input type="date" id="projTwoDurationTo">
+                        <label class="control-label col-lg-8" for="projTwoDuration">Duration</label>
+                        <div class="col-lg-10">
+                            From <input type="date" id="projTwoDurationFrom" formControlName="projTwoDurationFrom">
+                            To <input type="date" id="projTwoDurationTo" formControlName="projTwoDurationTo">
                             <div></div>
                         </div>
                     </div>
@@ -119,63 +123,56 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col-lg-4 offset-lg-1">Education
-                    <i class="bi bi-bag-check-fill"></i>
+                <div class="col-lg-4 offset-lg-1 subHeading-design">Education
+                    <i class="bi bi-book-fill"></i>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label class="control-label col-sm-6" for="lastQualification">Name of last qualification</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="lastQualification"
-                                placeholder="e.g Bachelor of Engineering">
+                        <label class="control-label col-lg-6" for="lastQualificationName">Name of last qualification</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="lastQualificationName"
+                                placeholder="e.g Bachelor of Engineering" formControlName="lastQualificationName">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-6" for="nameOfInstitution">Name of Institution</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="nameOfInstitution" placeholder="">
+                            <input type="text" class="form-control" id="nameOfInstitution" placeholder="" formControlName="nameOfInstitution">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-6" for="yearOfPassing">Year of Passing</label>
-                        <div class="col-sm-10">
-                            <input type="date" class="form-control" id="yearOfPassing" placeholder="DD/MM/YYYY">
+                        <label class="control-label col-lg-6" for="yearOfPassing">Year of Passing</label>
+                        <div class="col-lg-10">
+                            <input type="date" class="form-control" id="yearOfPassing" placeholder="DD/MM/YYYY" formControlName="yearOfPassing">
                         </div>
                     </div>
-                    <!-- <div class="form-group">
-                    <label class="control-label col-sm-6" for="lastQualification">Name of last qualification</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="lastQualification"
-                            placeholder="e.g Bachelor of Engineering">
-                    </div>
-                </div> -->
                 </div>
             </div>
             <hr>
             <div class="row">
-                <div class="col-lg-4 offset-lg-1">Achievements
-                    <i class="bi bi-bag-check-fill"></i>
+                <div class="col-lg-4 offset-lg-1 subHeading-design">Achievements
+                    <i class="bi bi-star-fill"></i>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label class="control-label col-lg-6" for="certifierName">Platform/Certifier Name</label>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" id="certifierName"
-                                placeholder="e.g Oragnization that issued">
+                                placeholder="e.g Oragnization that issued" formControlName="certifierName">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-6" for="achievementDescr">Description of achievement</label>
                         <div class="col-lg-10">
                             <textarea type="text" class="form-control" id="achievementDescr"
-                                placeholder="Single line description"></textarea>
+                                placeholder="Single line description" formControlName="achievementDescr"></textarea>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="form-group offset-lg-5 col-lg-4">
                 <div class="btn">
-                    <button type="submit" class="btn btn-primary">Print</button>
+                    <button type="submit" class="btn btn-primary" (click)="onPrint()">Print</button>
                 </div>
             </div>
         </form>

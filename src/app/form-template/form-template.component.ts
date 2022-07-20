@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-form-template',
   templateUrl: './form-template.component.html',
@@ -8,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class FormTemplateComponent implements OnInit {
 
   constructor() { }
-
   ngOnInit(): void {
+  }
+  onPrint()
+  {
+    console.log("print button clicked");
+    // var printOutContent = document.getElementById('printIt')?.innerHTML
+    window.print();
   }
 
 }
