@@ -24,16 +24,10 @@ export class FormTemplateComponent implements OnInit {
       operatingSystemName: [''],
       projectNameOne: [''],
       roleInProjectOne: [''],
-      projOneTotalDuration: this.formBuilder.group({
-        projOneDurationFrom: ['', Validators.required],
-        projOneDurationTo: ['', Validators.required],
-      }),
+      projOneDuration: ['', Validators.required],
       projectNameTwo: [''],
       roleInProjectTwo: [''],
-      projTwoTotalDuration: this.formBuilder.group({
-        projTwoDurationFrom: ['', Validators.required],
-        projTwoDurationTo: ['', Validators.required],
-      }),
+      projTwoDuration: ['', Validators.required],
       lastQualificationName: ['', Validators.required],
       nameOfInstitution: ['', Validators.required],
       yearOfPassing: ['', Validators.required],
@@ -41,10 +35,6 @@ export class FormTemplateComponent implements OnInit {
       achievementDescr: [''],
       profileSummary: [this.placeHolderForProfileSummary]
     });
-  }
-  onPrint(profileForm: FormGroup) {
-
-    window.print();
   }
   checkRequiredFields() {
 
@@ -54,5 +44,9 @@ export class FormTemplateComponent implements OnInit {
       this.errorMessage = "";
     }
   }
+  onPrint(profileForm: FormGroup) {
+    window.print();
+  }
+
 }
 
