@@ -17,7 +17,8 @@
                 <div class="col-lg-4 offset-lg-1">
                     <h2 class="headingStyle">Full Name</h2>
                     <p class="paraStyle">Profession (e.g. Front End Developer)</p>
-                    <p>[Candidate’s name] is a passionate [primary skill] and a [secondary skill] enthusiast,
+                    <p><span *ngIf="profileForm.get('fullName')">[Candidate’s name]</span> is a passionate [primary
+                        skill] and a [secondary skill] enthusiast,
                         having gained experience in both [primary domain] and [secondary domain] over
                         a span of [number] years. He has pursued his [name of degree/diploma] in [subject of
                         specialization]
@@ -25,31 +26,29 @@
                 </div>
             </div>
         </div>
-        <form class="form-horizontal">
+        <form class="form-horizontal" [formGroup]="profileForm" (ngSubmit)="onPrint(profileForm)">
             <div class="row">
-                <div class="col-lg-4 offset-lg-1 subHeading-design">Key Skills
+                <div class="col-sm-4 offset-sm-1 subHeading-design">Key Skills
                     <i class="bi bi-bookmark-fill"></i>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-sm-6">
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="fullName">Full Name</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="fullName" placeholder="Enter Full Name"
-                                formControlName="fullName">
+                                autocomplete="off" formControlName="fullName">
+                        </div>
+                    </div>
+                    <div class="text-danger col-lg-6"
+                        *ngIf="profileForm.get('fullName')?.errors?.['dirty'] || profileForm.get('fullName')?.errors?.['touched']">
+                        <div *ngIf="profileForm.get('fullName')?.errors?.['required']">This is a required field
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="profession">Profession</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="profession" placeholder="Enter Profession"
-                                formControlName="profession">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-lg-6" for="profileSummary">Profile Summary</label>
-                        <div class="col-lg-10">
-                            <textarea type="text" class="form-control" id="profileSummary" placeholder=""
-                                formControlName="profileSummary"></textarea>
+                                autocomplete="off" formControlName="profession">
                         </div>
                     </div>
                     <div class="form-group">
@@ -57,7 +56,7 @@
                             language/Framework</label>
                         <div class="col-lg-10">
                             <input type="text" class="form-control" id="programmingLangFromework"
-                                placeholder="Name of known language/Framework"
+                                placeholder="Name of known language/Framework" autocomplete="off"
                                 formControlName="programmingLangFromework">
                         </div>
                     </div>
@@ -65,57 +64,63 @@
                         <label class="control-label col-lg-6" for="versionControlName">Version Control Systems</label>
                         <div class="col-lg-10">
                             <input type="text" class="form-control" id="versionControlName"
-                                placeholder="Name of software Systems" formControlName="versionControlName">
+                                placeholder="Name of software Systems" autocomplete="off"
+                                formControlName="versionControlName">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-4" for="databaseName">Database</label>
                         <div class="col-lg-10">
                             <input type="text" class="form-control" id="databaseName"
-                                placeholder="Name of technologies worked with" formControlName="databaseName">
+                                placeholder="Name of technologies worked with" autocomplete="off"
+                                formControlName="databaseName">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-4" for="cloudTechnologiesName">Cloud Technologies</label>
                         <div class="col-lg-10">
                             <input type="text" class="form-control" id="cloudTechnologiesName"
-                                placeholder="Name of technologies worked on" formControlName="cloudTechnologiesName">
+                                placeholder="Name of technologies worked on" autocomplete="off"
+                                formControlName="cloudTechnologiesName">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-4" for="operatingSystemName">Operating Systems</label>
                         <div class="col-lg-10">
                             <input type="text" class="form-control" id="operatingSystemName"
-                                placeholder="Names of systems worked on" formControlName="operatingSystemName">
+                                placeholder="Names of systems worked on" autocomplete="off"
+                                formControlName="operatingSystemName">
                         </div>
                     </div>
                 </div>
             </div>
             <hr>
             <div class="row">
-                <div class="col-lg-4 offset-lg-1 subHeading-design">Experience
+                <div class="col-sm-4 offset-sm-1 subHeading-design">Experience
                     <i class="bi bi-bag-check-fill"></i>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="control-label col-lg-4" for="projectNameOne">Project 1 Name</label>
-                        <div class="col-lg-10">
+                        <label class="control-label col-sm-6" for="projectNameOne">Project 1 Name</label>
+                        <div class="col-sm-10">
                             <input type="text" class="form-control" id="projectNameOne" placeholder="Project worked on"
-                                formControlName="projectNameOne">
+                                autocomplete="off" formControlName="projectNameOne">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-lg-4" for="roleInProjectOne">Role in the Project</label>
-                        <div class="col-lg-10">
-                            <input type="text" class="form-control" id="roleInProjectOne" placeholder=""
-                                formControlName="roleInProjectOne">
+                        <label class="control-label col-sm-4" for="roleInProjectOne">Role in the Project</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="roleInProjectOne"
+                                placeholder="Role in the project" autocomplete="off" formControlName="roleInProjectOne">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-lg-8" for="projOneDuration">Duration</label>
-                        <div class="col-lg-10">
-                            From <input type="date" id="projOneDurationFrom" formControlName="projOneDurationFrom">
-                            To <input type="date" id="projOneDurationTo" formControlName="projOneDurationTo">
+                    <div class="form-group" formGroupName="projOneTotalDuration">
+                        <label class="control-label col-sm-8" for="projOneDuration">Duration</label>
+                        <div class="col-sm-10">
+                            Start date <input type="date" id="projOneDurationFrom" placeholder="From" autocomplete="off"
+                                formControlName="projOneDurationFrom">
+                            End date <input type="date" id="projOneDurationTo" placeholder="To" autocomplete="off"
+                                formControlName="projOneDurationTo">
                             <div></div>
                         </div>
                     </div>
@@ -123,21 +128,23 @@
                         <label class="control-label col-sm-4" for="projectNameTwo">Project 2 Name</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="projectNameTwo" placeholder="Project worked on"
-                                formControlName="projectNameTwo">
+                                autocomplete="off" formControlName="projectNameTwo">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-4" for="roleInProjectTwo">Role in the Project</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="roleInProjectTwo" placeholder=""
-                                formControlName="roleInProjectTwo">
+                            <input type="text" class="form-control" id="roleInProjectTwo" placeholder="Role in Project"
+                                autocomplete="off" formControlName="roleInProjectTwo">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-lg-8" for="projTwoDuration">Duration</label>
-                        <div class="col-lg-10">
-                            From <input type="date" id="projTwoDurationFrom" formControlName="projTwoDurationFrom">
-                            To <input type="date" id="projTwoDurationTo" formControlName="projTwoDurationTo">
+                    <div class="form-group" formGroupName="projTwoTotalDuration">
+                        <label class="control-label col-sm-8" for="projTwoDuration">Duration</label>
+                        <div class="col-sm-10">
+                            Start Date <input type="date" id="projTwoDurationFrom" placeholder="From" autocomplete="off"
+                                formControlName="projTwoDurationFrom">
+                            End Date <input type="date" id="projTwoDurationTo" placeholder="To" autocomplete="off"
+                                formControlName="projTwoDurationTo">
                             <div></div>
                         </div>
                     </div>
@@ -145,59 +152,70 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col-lg-4 offset-lg-1 subHeading-design">Education
+                <div class="col-sm-4 offset-sm-1 subHeading-design">Education
                     <i class="bi bi-book-fill"></i>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="control-label col-lg-6" for="lastQualificationName">Name of last
+                        <label class="control-label col-sm-6" for="lastQualificationName">Name of last
                             qualification</label>
-                        <div class="col-lg-10">
+                        <div class="col-sm-10">
                             <input type="text" class="form-control" id="lastQualificationName"
-                                placeholder="e.g Bachelor of Engineering" formControlName="lastQualificationName">
+                                placeholder="e.g Bachelor of Engineering" autocomplete="off"
+                                formControlName="lastQualificationName">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-6" for="nameOfInstitution">Name of Institution</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="nameOfInstitution" placeholder=""
+                            <input type="text" class="form-control" id="nameOfInstitution"
+                                placeholder="Enter name of Institution" autocomplete="off"
                                 formControlName="nameOfInstitution">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-lg-6" for="yearOfPassing">Year of Passing</label>
-                        <div class="col-lg-10">
+                        <label class="control-label col-sm-6" for="yearOfPassing">Year of Passing</label>
+                        <div class="col-sm-10">
                             <input type="date" class="form-control" id="yearOfPassing" placeholder="DD/MM/YYYY"
-                                formControlName="yearOfPassing">
+                                autocomplete="off" formControlName="yearOfPassing">
                         </div>
                     </div>
                 </div>
             </div>
             <hr>
             <div class="row">
-                <div class="col-lg-4 offset-lg-1 subHeading-design">Achievements
+                <div class="col-sm-4 offset-sm-1 subHeading-design">Achievements
                     <i class="bi bi-star-fill"></i>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="control-label col-lg-6" for="certifierName">Platform/Certifier Name</label>
-                        <div class="col-lg-4">
+                        <label class="control-label col-sm-6" for="certifierName">Platform/Certifier Name</label>
+                        <div class="col-sm-10">
                             <input type="text" class="form-control" id="certifierName"
-                                placeholder="e.g Oragnization that issued" formControlName="certifierName">
+                                placeholder="e.g Oragnization that issued" autocomplete="off"
+                                formControlName="certifierName">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-lg-6" for="achievementDescr">Description of achievement</label>
-                        <div class="col-lg-10">
+                        <label class="control-label col-sm-6" for="achievementDescr">Description of achievement</label>
+                        <div class="col-sm-10">
                             <textarea type="text" class="form-control" id="achievementDescr"
-                                placeholder="Single line description" formControlName="achievementDescr"></textarea>
+                                placeholder="Single line description" autocomplete="off"
+                                formControlName="achievementDescr"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-6" for="profileSummary">Profile Summary</label>
+                        <div class="col-sm-10">
+                            <textarea type="text" class="form-control" id="profileSummary" autocomplete="off"
+                                formControlName="profileSummary" minlength=20 maxlength=100 rows="4"></textarea>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="form-group offset-lg-5 col-lg-4">
+            <div class="form-group offset-sm-5 col-sm-4">
                 <div class="btn">
-                    <button type="submit" class="btn btn-primary" (click)="onPrint()">Print</button>
+                    <button type="submit" class="btn btn-primary">Print</button>
                 </div>
             </div>
         </form>

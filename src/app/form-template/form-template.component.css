@@ -34,7 +34,9 @@ div>label {
 }
 
 @media print {
-  input[type=text] {
+
+  input[type=text],
+  textarea {
     display: inline-block;
     border: none;
   }
