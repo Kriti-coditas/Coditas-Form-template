@@ -3,32 +3,29 @@
     <!-- Bootstrap Font Icon CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
-<div class="printIt">
+<div>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand">coditas</a>
+                <a class="navbar-brand">
+                    <img width="130px" height="30px" src="assets/coditas_image.jpg">
+                </a>
             </div>
         </div>
     </nav>
-    <div class="container-fluid mt-3">
+    <div class="container-fluid">
         <div class="hiddenFormContent">
             <div class="row">
-                <div class="col-lg-4 offset-lg-1">
-                    <h2 class="headingStyle">Full Name</h2>
-                    <p class="paraStyle">Profession (e.g. Front End Developer)</p>
-                    <p><span *ngIf="profileForm.get('fullName')">[Candidate’s name]</span> is a passionate [primary
-                        skill] and a [secondary skill] enthusiast,
-                        having gained experience in both [primary domain] and [secondary domain] over
-                        a span of [number] years. He has pursued his [name of degree/diploma] in [subject of
-                        specialization]
-                        and is currently working as a [designation] at Coditas.</p>
+                <div class="col-sm-10 offset-sm-1">
+                    <h2 class="headingStyle">{{candidateName}}</h2>
+                    <p class="candidateDesignationStyle">{{candidateDesignation}}</p>
+                    <p>{{profileSummaryInPara}}</p>
                 </div>
             </div>
         </div>
         <form class="form-horizontal" [formGroup]="profileForm" (ngSubmit)="onPrint(profileForm)">
             <div class="row">
-                <div class="col-sm-4 offset-sm-1 subHeading-design">Key Skills
+                <div class="col-sm-4 offset-sm-1 subHeadingDesign">Key Skills
                     <i class="bi bi-bookmark-fill"></i>
                 </div>
                 <div class="col-sm-6">
@@ -36,7 +33,7 @@
                         <label class="control-label col-sm-4" for="fullName">Full Name</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="fullName" placeholder="Enter Full Name"
-                                autocomplete="off" formControlName="fullName">
+                                autocomplete="off" [(ngModel)]="candidateName" formControlName="fullName">
                         </div>
                     </div>
                     <div class="text-danger col-lg-6"
@@ -48,7 +45,7 @@
                         <label class="control-label col-sm-2" for="profession">Profession</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="profession" placeholder="Enter Profession"
-                                autocomplete="off" formControlName="profession">
+                                autocomplete="off" [(ngModel)]="candidateDesignation" formControlName="profession">
                         </div>
                     </div>
                     <div class="form-group">
@@ -96,7 +93,7 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col-sm-4 offset-sm-1 subHeading-design">Experience
+                <div class="col-sm-4 offset-sm-1 subHeadingDesign">Experience
                     <i class="bi bi-bag-check-fill"></i>
                 </div>
                 <div class="col-sm-6">
@@ -108,7 +105,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-4" for="roleInProjectOne">Role in the Project</label>
+                        <label class="control-label col-sm-6" for="roleInProjectOne">Role in the Project</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="roleInProjectOne"
                                 placeholder="Role in the project" autocomplete="off" formControlName="roleInProjectOne">
@@ -152,7 +149,7 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col-sm-4 offset-sm-1 subHeading-design">Education
+                <div class="col-sm-4 offset-sm-1 subHeadingDesign">Education
                     <i class="bi bi-book-fill"></i>
                 </div>
                 <div class="col-sm-6">
@@ -184,7 +181,7 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col-sm-4 offset-sm-1 subHeading-design">Achievements
+                <div class="col-sm-4 offset-sm-1 subHeadingDesign">Achievements
                     <i class="bi bi-star-fill"></i>
                 </div>
                 <div class="col-sm-6">
@@ -204,19 +201,21 @@
                                 formControlName="achievementDescr"></textarea>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group hideProfileSummaryOnPrint">
                         <label class="control-label col-sm-6" for="profileSummary">Profile Summary</label>
                         <div class="col-sm-10">
                             <textarea type="text" class="form-control" id="profileSummary" autocomplete="off"
-                                formControlName="profileSummary" minlength=20 maxlength=100 rows="4"></textarea>
+                                formControlName="profileSummary" minlength=20 maxlength=500 rows="8" cols="10"
+                                [(ngModel)]="profileSummaryInPara" (keyup)="checkRequiredFields()"></textarea>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="form-group offset-sm-5 col-sm-4">
+            <div class="form-group offset-sm-5 col-sm-7">
                 <div class="btn">
                     <button type="submit" class="btn btn-primary">Print</button>
                 </div>
+                <div class="text-danger" *ngIf="errorMessage"><span>{{errorMessage}}</span></div>
             </div>
         </form>
     </div>

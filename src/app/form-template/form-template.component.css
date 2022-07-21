@@ -1,7 +1,15 @@
+.a {
+  position: relative;
+  top: -10px;
+}
+
 .flex-container {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+}
+
+.form-horizontal {
+  margin-top: 40px;
 }
 
 div>label {
@@ -12,12 +20,11 @@ div>label {
   width: 150px;
 }
 
-.subHeading-design {
-  /* color: #27A2F3; */
-  /* color: #1196EF; */
-  color: #329DE5;
-  font-weight: lighter;
-  font-family: Arial;
+.subHeadingDesign {
+  /* color: hwb(204 13% 4%); */
+  color: hwb(204 8% 9%);
+  font-weight: medium;
+  font-family: sans-serif;
   font-size: large;
 }
 
@@ -25,8 +32,8 @@ div>label {
   display: none;
 }
 
-.paraStyle {
-  font-size: medium;
+.candidateDesignationStyle {
+  font-size: x-large;
 }
 
 .headingStyle {
@@ -45,9 +52,24 @@ div>label {
     display: inline-block;
   }
 
+  .hideProfileSummaryOnPrint {
+    display: none;
+  }
+
   input[type=date],
   button {
     display: none;
     border: none;
   }
+
+  .form-horizontal {
+    margin-top: 70px;
+  }
+
+  .navbar-header {
+    margin-top: 50px;
+    margin-left: 70px;
+
+  }
+
 }
