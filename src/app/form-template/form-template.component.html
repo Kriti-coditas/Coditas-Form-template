@@ -17,13 +17,13 @@
         <div class="hiddenFormContent">
             <div class="row">
                 <div class="col-sm-10 offset-sm-1">
-                    <h2 class="headingStyle">{{candidateName}}</h2>
-                    <p class="candidateDesignationStyle">{{candidateDesignation}}</p>
-                    <p>{{profileSummaryInPara}}</p>
+                    <h2 class="headingStyle" id="showHeadingOnlyOnPrint">{{candidateName}}</h2>
+                    <p class="candidateDesignationStyle" id="showParaOnlyOnPrint">{{candidateDesignation}}</p>
+                    <p class="profileSummaryInPara">{{profileSummaryInPara}}</p>
                 </div>
             </div>
         </div>
-        <form class="form-horizontal" [formGroup]="profileForm" (ngSubmit)="onPrint(profileForm)">
+        <form class="form-horizontal" [formGroup]="profileForm" (ngSubmit)="onPrint()">
             <div class="row">
                 <div class="col-sm-4 offset-sm-1 subHeadingDesign">Key Skills
                     <i class="bi bi-bookmark-fill"></i>
@@ -91,7 +91,7 @@
                     </div>
                 </div>
             </div>
-            <hr>
+            <hr class="page-break">
             <div class="row">
                 <div class="col-sm-4 offset-sm-1 subHeadingDesign">Experience
                     <i class="bi bi-bag-check-fill"></i>
@@ -100,8 +100,9 @@
                     <div class="form-group">
                         <label class="control-label col-sm-6" for="projectNameOne">Project 1 Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="projectNameOne" placeholder="Project worked on"
-                                autocomplete="off" formControlName="projectNameOne">
+                            <textarea type="text" class="form-control" id="projectNameOne" autocomplete="off"
+                                formControlName="projectNameOne" minlength=20 maxlength=500 rows="3"
+                                placeholder="A very brief description of the project  (e.g. The project involved creating a website for an e-commerce brand.)"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -111,7 +112,7 @@
                                 placeholder="Role in the project" autocomplete="off" formControlName="roleInProjectOne">
                         </div>
                     </div>
-                    <div class="form-group" formGroupName="projOneTotalDuration">
+                    <div class="form-group">
                         <label class="control-label col-sm-8" for="projOneDuration">Duration</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="projOneDuration"
@@ -122,8 +123,9 @@
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="projectNameTwo">Project 2 Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="projectNameTwo" placeholder="Project worked on"
-                                autocomplete="off" formControlName="projectNameTwo">
+                            <textarea type="text" class="form-control" id="projectNameTwo" autocomplete="off"
+                                formControlName="projectNameTwo" minlength=20 maxlength=500 rows="3"
+                                placeholder="A very brief description of the project  (e.g. The project involved creating a website for an e-commerce brand.)"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -133,7 +135,7 @@
                                 autocomplete="off" formControlName="roleInProjectTwo">
                         </div>
                     </div>
-                    <div class="form-group" formGroupName="projTwoTotalDuration">
+                    <div class="form-group">
                         <label class="control-label col-sm-8" for="projTwoDuration">Duration</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="projTwoDuration"

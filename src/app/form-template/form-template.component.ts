@@ -11,7 +11,6 @@ export class FormTemplateComponent implements OnInit {
   candidateDesignation!: string;
   profileSummaryInPara: string = "[Candidate’s name] is a passionate [primary skill] and a [secondary skill] enthusiast having gained experience in both '[primary domain]' and [secondary domain] overall span of [number] years. He has pursued his [name of degree/diploma] in [subject of specialization] and is currently working as a [designation] at Coditas.";
   errorMessage: string = "";
-  placeHolderForProfileSummary: string = "[Candidate’s name] is a passionate [primary skill] and a [secondary skill] enthusiast having gained experience in both '[primary domain]' and [secondary domain] overall span of [number] years. He has pursued his [name of degree/diploma] in [subject of specialization] and is currently working as a [designation] at Coditas.";
   profileForm!: FormGroup;
   ngOnInit() {
     this.profileForm = this.formBuilder.group({
@@ -33,10 +32,11 @@ export class FormTemplateComponent implements OnInit {
       yearOfPassing: ['', Validators.required],
       certifierName: [''],
       achievementDescr: [''],
-      profileSummary: [this.placeHolderForProfileSummary]
+      profileSummary: ['']
     });
   }
   checkRequiredFields() {
+    console.log("Inside checkRequiredFields");
 
     if (!this.profileForm.value.fullName || !this.profileForm.value.profession || !this.profileForm.value.profileSummary) {
       this.errorMessage = "Please fill all the Mandatory fields to Print"
@@ -44,9 +44,8 @@ export class FormTemplateComponent implements OnInit {
       this.errorMessage = "";
     }
   }
-  onPrint(profileForm: FormGroup) {
+  onPrint() {
     window.print();
   }
-
 }
 

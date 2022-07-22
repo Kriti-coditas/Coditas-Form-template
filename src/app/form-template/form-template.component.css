@@ -3,9 +3,20 @@
   top: -10px;
 }
 
-.flex-container {
+/* .flex-container {
   display: flex;
   justify-content: center;
+} */
+.container-fluid {
+  margin-top: 50px;
+}
+
+.profileSummaryInPara {
+  font-size: large;
+}
+
+hr {
+  margin-top: 80px;
 }
 
 .form-horizontal {
@@ -70,6 +81,11 @@ div>label {
     margin-top: 50px;
     margin-left: 70px;
 
+  }
+
+  .page-break {
+    display: block;
+    page-break-before: always;
   }
 
 }
