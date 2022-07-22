@@ -104,5 +104,8 @@ textarea{
     margin-top: 30px;
     margin-bottom: 0px;
   }
+  .hideNameAndProfession{
+    display: none;
+  }
  
 }

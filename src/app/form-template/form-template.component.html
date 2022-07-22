@@ -29,7 +29,7 @@
                     <i class="bi bi-bookmark-fill"></i>
                 </div>
                 <div class="col-sm-6">
-                    <div class="form-group">
+                    <div class="form-group hideNameAndProfession">
                         <label class="control-label col-sm-4" for="fullName">Full Name</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="fullName" placeholder="Enter Full Name"
@@ -41,8 +41,8 @@
                         <div *ngIf="profileForm.get('fullName')?.errors?.['required']">This is a required field
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="profession">Profession</label>
+                    <div class="form-group hideNameAndProfession">
+                        <label class="control-label col-sm-2 hideLabels" for="profession">Profession</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="profession" placeholder="Enter Profession"
                                 autocomplete="off" [(ngModel)]="candidateDesignation" formControlName="profession">
