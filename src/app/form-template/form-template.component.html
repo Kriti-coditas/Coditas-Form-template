@@ -120,28 +120,33 @@
                                 formControlName="projOneDuration">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-4" for="projectNameTwo">Project 2 Name</label>
-                        <div class="col-sm-10">
-                            <textarea type="text" class="form-control" id="projectNameTwo" autocomplete="off"
-                                formControlName="projectNameTwo" minlength=20 maxlength=500 rows="3"
-                                placeholder="A very brief description of the project  (e.g. The project involved creating a website for an e-commerce brand.)"></textarea>
+                    <div *ngIf="addMoreProjects">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="projectNameTwo">Project 2 Name</label>
+                            <div class="col-sm-10">
+                                <textarea type="text" class="form-control" id="projectNameTwo" autocomplete="off"
+                                    formControlName="projectNameTwo" minlength=20 maxlength=500 rows="3"
+                                    placeholder="A very brief description of the project  (e.g. The project involved creating a website for an e-commerce brand.)"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-4" for="roleInProjectTwo">Role in the Project</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="roleInProjectTwo"
+                                    placeholder="Role in Project" autocomplete="off" formControlName="roleInProjectTwo">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-8" for="projTwoDuration">Duration</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="projTwoDuration"
+                                    placeholder="Enter with months/years" autocomplete="off"
+                                    formControlName="projTwoDuration">
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-lg-4" for="roleInProjectTwo">Role in the Project</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="roleInProjectTwo" placeholder="Role in Project"
-                                autocomplete="off" formControlName="roleInProjectTwo">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-8" for="projTwoDuration">Duration</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="projTwoDuration"
-                                placeholder="Enter with months/years" autocomplete="off"
-                                formControlName="projTwoDuration">
-                        </div>
+                    <div class="form-group col-lg-7 hideAddMoreProjects">
+                        <i class="bi bi-plus" (click)="onAddMoreProject()">Add More Projects</i>
                     </div>
                 </div>
             </div>

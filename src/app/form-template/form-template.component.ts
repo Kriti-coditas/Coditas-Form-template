@@ -11,6 +11,8 @@ export class FormTemplateComponent implements OnInit {
   candidateDesignation!: string;
   profileSummaryInPara: string = "[Candidate’s name] is a passionate [primary skill] and a [secondary skill] enthusiast having gained experience in both '[primary domain]' and [secondary domain] overall span of [number] years. He has pursued his [name of degree/diploma] in [subject of specialization] and is currently working as a [designation] at Coditas.";
   errorMessage: string = "";
+  addMoreProjects: Boolean = false;
+  countProjects: number = 1;
   profileForm!: FormGroup;
   ngOnInit() {
     this.profileForm = this.formBuilder.group({
@@ -32,12 +34,19 @@ export class FormTemplateComponent implements OnInit {
       yearOfPassing: ['', Validators.required],
       certifierName: [''],
       achievementDescr: [''],
-      profileSummary: ['']
+      profileSummary: [''],
+      // projects:[''],
+      //projects: this.formBuilder.array([]),
     });
+  }
+  onAddMoreProject() {
+    // this.countProjects+=1;
+    this.addMoreProjects = true;
+    console.log("add more projects");
   }
   checkRequiredFields() {
     // console.log("Inside checkRequiredFields");
-    if (!this.profileForm.value.fullName || !this.profileForm.value.profession || !this.profileForm.value.profileSummary) {
+    if (this.candidateName !== "" || this.candidateDesignation !== "" || !this.profileSummaryInPara) {
       this.errorMessage = "Please fill all the Mandatory fields to Print"
     } else {
       this.errorMessage = "";
@@ -47,6 +56,8 @@ export class FormTemplateComponent implements OnInit {
     window.print();
   }
   onReset() {
+    this.errorMessage = "";
+    this.addMoreProjects = false;
     var onResetProfileSummary = document.getElementById('profileSummary');
     const el = document.querySelector('button');
     if (onResetProfileSummary != null) {

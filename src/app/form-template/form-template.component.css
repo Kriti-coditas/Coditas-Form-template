@@ -36,6 +36,9 @@ div>label {
   font-family: sans-serif;
   font-size: large;
 }
+textarea{
+  resize: none;
+}
 
 .hiddenFormContent {
   display: none;
@@ -48,17 +51,27 @@ div>label {
 .headingStyle {
   font-weight: bolder;
 }
+.bi-plus{
+  color: hwb(204 8% 9%) ;
+  size: 30px;
+  font-weight: medium;
+  font-family: sans-serif;
+}
 
 @media print {
 
   input[type=text],
   textarea {
+    resize: none;
     display: inline-block;
     border: none;
   }
 
   .hiddenFormContent {
     display: inline-block;
+  }
+  .hideAddMoreProjects{
+    display: none;
   }
 
   .hideProfileSummaryOnPrint {
@@ -82,6 +95,7 @@ div>label {
   }
 
   .page-break {
+    /* margin-top: 50px; */
     display: block;
     page-break-before: always;
   }
@@ -90,10 +104,5 @@ div>label {
     margin-top: 30px;
     margin-bottom: 0px;
   }
-
-  @page {
-    size: auto;
-    margin: 0;
-  }
-
+ 
 }
