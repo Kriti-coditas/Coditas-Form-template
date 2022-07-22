@@ -3,12 +3,8 @@
   top: -10px;
 }
 
-/* .flex-container {
-  display: flex;
-  justify-content: center;
-} */
 .container-fluid {
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 .profileSummaryInPara {
@@ -16,11 +12,12 @@
 }
 
 hr {
-  margin-top: 80px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .form-horizontal {
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 div>label {
@@ -28,7 +25,8 @@ div>label {
 }
 
 .btn {
-  width: 150px;
+  width: 120px;
+  /* outline:none;   */
 }
 
 .subHeadingDesign {
@@ -86,6 +84,16 @@ div>label {
   .page-break {
     display: block;
     page-break-before: always;
+  }
+
+  hr {
+    margin-top: 30px;
+    margin-bottom: 0px;
+  }
+
+  @page {
+    size: auto;
+    margin: 0;
   }
 
 }

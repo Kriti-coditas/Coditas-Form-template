@@ -36,8 +36,7 @@ export class FormTemplateComponent implements OnInit {
     });
   }
   checkRequiredFields() {
-    console.log("Inside checkRequiredFields");
-
+    // console.log("Inside checkRequiredFields");
     if (!this.profileForm.value.fullName || !this.profileForm.value.profession || !this.profileForm.value.profileSummary) {
       this.errorMessage = "Please fill all the Mandatory fields to Print"
     } else {
@@ -46,6 +45,13 @@ export class FormTemplateComponent implements OnInit {
   }
   onPrint() {
     window.print();
+  }
+  onReset() {
+    var onResetProfileSummary = document.getElementById('profileSummary');
+    const el = document.querySelector('button');
+    if (onResetProfileSummary != null) {
+      onResetProfileSummary.innerHTML = this.profileSummaryInPara;
+    }
   }
 }
 

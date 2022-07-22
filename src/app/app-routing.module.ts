@@ -1,7 +1,10 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [];
+import {FormTemplateComponent} from '../app/form-template/form-template.component'
+const routes: Routes = [
+ {path:'employeeForm',component:FormTemplateComponent},
+ {path:'**',redirectTo:'employeeForm',pathMatch:'full'}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
