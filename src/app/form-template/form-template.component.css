@@ -107,5 +107,11 @@ textarea{
   .hideNameAndProfession{
     display: none;
   }
+  input{
+    padding: 0;
+  }
+  textarea{
+    padding: 0;
+  }
  
 }
