@@ -26,7 +26,6 @@ div>label {
 
 .btn {
   width: 120px;
-  /* outline:none;   */
 }
 
 .subHeadingDesign {
@@ -36,7 +35,8 @@ div>label {
   font-family: sans-serif;
   font-size: large;
 }
-textarea{
+
+textarea {
   resize: none;
 }
 
@@ -51,11 +51,16 @@ textarea{
 .headingStyle {
   font-weight: bolder;
 }
-.bi-plus{
-  color: hwb(204 8% 9%) ;
+
+.bi-plus {
+  color: hwb(204 8% 9%);
   size: 30px;
   font-weight: medium;
   font-family: sans-serif;
+}
+
+.previewSection {
+  display: hidden;
 }
 
 @media print {
@@ -70,7 +75,8 @@ textarea{
   .hiddenFormContent {
     display: inline-block;
   }
-  .hideAddMoreProjects{
+
+  .hideAddMoreProjects {
     display: none;
   }
 
@@ -91,7 +97,6 @@ textarea{
   .navbar-header {
     margin-top: 50px;
     margin-left: 70px;
-
   }
 
   .page-break {
@@ -104,14 +109,37 @@ textarea{
     margin-top: 30px;
     margin-bottom: 0px;
   }
-  .hideNameAndProfession{
+
+  .hideNameAndProfession {
     display: none;
   }
-  input{
+
+  input {
     padding: 0;
   }
-  textarea{
+
+  textarea {
     padding: 0;
   }
- 
+
+  label {
+    font-size: larger;
+  }
+
+  input {
+    font-size: larger;
+  }
+
+  .subHeadingDesign {
+    font-size: x-large;
+  }
+
+  textarea::placeholder {
+    font-size: large;
+  }
+
+  .previewSection {
+    display: hidden;
+  }
+
 }

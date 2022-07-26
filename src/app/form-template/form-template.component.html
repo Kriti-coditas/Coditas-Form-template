@@ -3,27 +3,27 @@
     <!-- Bootstrap Font Icon CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
-<div>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand">
-                    <img width="130px" height="30px" src="assets/coditas_image.jpg">
-                </a>
-            </div>
-        </div>
-    </nav>
+<nav class="navbar navbar-default">
     <div class="container-fluid">
-        <div class="hiddenFormContent">
-            <div class="row">
-                <div class="col-sm-10 offset-sm-1">
-                    <h2 class="headingStyle" id="showHeadingOnlyOnPrint">{{candidateName}}</h2>
-                    <p class="candidateDesignationStyle" id="showParaOnlyOnPrint">{{candidateDesignation}}</p>
-                    <p class="profileSummaryInPara">{{profileSummaryInPara}}</p>
-                </div>
+        <div class="navbar-header">
+            <a class="navbar-brand">
+                <img width="130px" height="30px" src="assets/coditas_image.jpg">
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="hiddenFormContent">
+        <div class="row">
+            <div class="col-sm-10 offset-sm-1">
+                <h2 class="headingStyle" id="showHeadingOnlyOnPrint">{{candidateName}}</h2>
+                <p class="candidateDesignationStyle" id="showParaOnlyOnPrint">{{candidateDesignation}}</p>
+                <p class="profileSummaryInPara">{{profileSummaryInPara}}</p>
             </div>
         </div>
-        <form class="form-horizontal" [formGroup]="profileForm" (ngSubmit)="onPrint()">
+    </div>
+    <div *ngIf="onFormEdit">
+        <form class="form-horizontal" [formGroup]="profileForm">
             <div class="row">
                 <div class="col-sm-4 offset-sm-1   offset-lg-2 col-lg-3 subHeadingDesign">Key Skills
                     <i class="bi bi-bookmark-fill"></i>
@@ -102,7 +102,7 @@
                         <div class="col-sm-10">
                             <textarea type="text" class="form-control" id="projectNameOne" autocomplete="off"
                                 formControlName="projectNameOne" minlength=20 maxlength=500 rows="3"
-                                placeholder="A very brief description of the project  (e.g. The project involved creating a website for an e-commerce brand.)"></textarea>
+                                placeholder="A very brief description of the project you have worked on"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -157,7 +157,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="control-label col-sm-6" for="lastQualificationName">Name of last
+                        <label class="control-label col-sm-8" for="lastQualificationName">Name of last
                             qualification</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="lastQualificationName"
@@ -189,7 +189,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="control-label col-sm-6" for="certifierName">Platform/Certifier Name</label>
+                        <label class="control-label col-sm-8" for="certifierName">Platform/Certifier Name</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="certifierName"
                                 placeholder="e.g Oragnization that issued" autocomplete="off"
@@ -197,7 +197,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-6" for="achievementDescr">Description of achievement</label>
+                        <label class="control-label col-sm-8" for="achievementDescr">Description of achievement</label>
                         <div class="col-sm-10">
                             <textarea type="text" class="form-control" id="achievementDescr"
                                 placeholder="Single line description" autocomplete="off"
@@ -216,13 +216,156 @@
             </div>
             <div class="form-group offset-lg-5 col-lg-7">
                 <div class="btn">
-                    <button type="submit" class="btn btn-primary">Print</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="printBtnDisabled" (click)="onPrint()">Print</button>
                 </div>
                 <div class="btn offset-1">
                     <button type="reset" class="btn btn-primary" (click)="onReset()">Reset</button>
+                </div>
+                <div class="btn offset-1">
+                    <button type="submit" class="btn btn-primary" [disabled]="previewBtnDisabled"
+                        (click)="onPreview()">Preview</button>
                 </div>
                 <div class="text-danger" *ngIf="errorMessage"><span>{{errorMessage}}</span></div>
             </div>
         </form>
     </div>
+    <!-- preview starts -->
+    <div class="previewSection" *ngIf="displayPreviewSection">
+        <form class="form-horizontal" *ngFor="let profileInput of profileData">
+            <div class="row">
+                <div class="col-sm-4 offset-sm-1   offset-lg-2 col-lg-3 subHeadingDesign">Key Skills
+                    <i class="bi bi-bookmark-fill"></i>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group hideNameAndProfession">
+                        <label class="control-label col-sm-4" for="fullName">Full Name</label>
+                        <div class="col-sm-10">{{profileInput.fullName}}</div>
+                    </div>
+                    <div class="text-danger col-lg-6">
+                    </div>
+                    <div class="form-group hideNameAndProfession">
+                        <label class="control-label col-sm-2 hideLabels" for="profession">Profession</label>
+                        <div class="col-sm-10">{{profileInput.profession}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-8" for="programmingLangFromework">Programming
+                            language/Framework</label>
+                        <div class="col-lg-10">{{profileInput.programmingLangFromework}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-6" for="versionControlName">Version Control Systems</label>
+                        <div class="col-lg-10">{{profileInput.versionControlName}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4" for="databaseName">Database</label>
+                        <div class="col-lg-10">{{profileInput.databaseName}}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4" for="cloudTechnologiesName">Cloud Technologies</label>
+                        <div class="col-lg-10">{{profileInput.cloudTechnologiesName}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4" for="operatingSystemName">Operating Systems</label>
+                        <div class="col-lg-10">{{profileInput.operatingSystemName}}</div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-4 offset-sm-1 offset-lg-2 col-lg-3 subHeadingDesign">Experience
+                    <i class="bi bi-bag-check-fill"></i>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-6" for="projectNameOne">Project 1 Name</label>
+                        <div class="col-sm-10">{{profileInput.projectNameOne}} </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-6" for="roleInProjectOne">Role in the Project</label>
+                        <div class="col-sm-10">{{profileInput.roleInProjectOne}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-8" for="projOneDuration">Duration</label>
+                        <div class="col-sm-10">{{profileInput.projOneDuration}}
+                        </div>
+                    </div>
+                    <div *ngIf="addMoreProjects">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="projectNameTwo">Project 2 Name</label>
+                            <div class="col-sm-10">{{profileInput.projectNameTwo}}</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-4" for="roleInProjectTwo">Role in the Project</label>
+                            <div class="col-sm-10">{{profileInput.roleInProjectTwo}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-8" for="projTwoDuration">Duration</label>
+                            <div class="col-sm-10">{{profileInput.projTwoDuration}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-7 hideAddMoreProjects">
+                        <i class="bi bi-plus">Add More Projects</i>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-4 offset-sm-1 offset-lg-2 col-lg-3 subHeadingDesign">Education
+                    <i class="bi bi-book-fill"></i>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-6" for="lastQualificationName">Name of last
+                            qualification</label>
+                        <div class="col-sm-10">{{profileInput.lastQualificationName}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-6" for="nameOfInstitution">Name of Institution</label>
+                        <div class="col-sm-10">{{profileInput.nameOfInstitution}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-6" for="yearOfPassing">Year of Passing</label>
+                        <div class="col-sm-10">{{profileInput.yearOfPassing}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-4 offset-sm-1 offset-lg-2 col-lg-3 subHeadingDesign">Achievements
+                    <i class="bi bi-star-fill"></i>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-6" for="certifierName">Platform/Certifier Name</label>
+                        <div class="col-sm-10">{{profileInput.certifierName}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-6" for="achievementDescr">Description of achievement</label>
+                        <div class="col-sm-10">{{profileInput.achievementDescr}}
+                        </div>
+                    </div>
+                    <div class="form-group hideProfileSummaryOnPrint">
+                        <label class="control-label col-sm-6" for="profileSummary">Profile Summary</label>
+                        <div class="col-sm-10">{{profileInput.profileSummary}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group offset-lg-5 col-lg-7">
+                <div class="form-group offset-lg-5 col-lg-7">
+                    <div class="btn">
+                        <button type="submit" class="btn btn-primary" (click)="onPrint()">Print</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
+<!-- preview ends -->

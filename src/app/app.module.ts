@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormTemplateComponent } from './form-template/form-template.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {ProfileDataService} from '../app/profile-data.service'
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ProfileDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
