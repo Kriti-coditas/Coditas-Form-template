@@ -143,5 +143,9 @@ export class FormTemplateComponent implements OnInit {
       onResetProfileSummary.innerHTML = this.profileSummaryInPara;
     }
   }
+  onEdit(){
+    this.displayPreviewSection=false;
+    this.onFormEdit=true;
+  }
 }
 
