@@ -59,6 +59,13 @@ textarea {
   font-family: sans-serif;
 }
 
+.bi-dash {
+  color: hwb(204 8% 9%);
+  size: 30px;
+  font-weight: medium;
+  font-family: sans-serif;
+}
+
 .previewSection {
   display: hidden;
 }
@@ -76,7 +83,7 @@ textarea {
     display: inline-block;
   }
 
-  .hideAddMoreProjects {
+  .hideProjectIcons {
     display: none;
   }
 
@@ -143,3 +150,8 @@ textarea {
   }
 
 }
+
+/* @page {
+  size: A4;
+  margin: 0;
+} */

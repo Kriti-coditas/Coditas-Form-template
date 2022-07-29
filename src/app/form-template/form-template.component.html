@@ -12,7 +12,7 @@
         </div>
     </div>
 </nav>
-<div class="container-fluid">
+<div class="container-fluid" id="previewSection1">
     <div class="hiddenFormContent">
         <div class="row">
             <div class="col-sm-10 offset-sm-1">
@@ -100,56 +100,45 @@
                     <i class="bi bi-bag-check-fill"></i>
                 </div>
                 <div class="col-sm-6">
-                    <div class="form-group">
-                        <label class="control-label col-sm-6" for="projectNameOne">Project 1 Name</label>
-                        <div class="col-sm-10">
-                            <textarea type="text" class="form-control" id="projectNameOne" autocomplete="off"
-                                formControlName="projectNameOne" minlength=20 maxlength=500 rows="3"
-                                placeholder="A very brief description of the project you have worked on"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-6" for="roleInProjectOne">Role in the Project</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="roleInProjectOne"
-                                placeholder="Role in the project" autocomplete="off" formControlName="roleInProjectOne">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-8" for="projOneDuration">Duration</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="projOneDuration"
-                                placeholder="Enter with months/years" autocomplete="off"
-                                formControlName="projOneDuration">
-                        </div>
-                    </div>
-                    <div *ngIf="addMoreProjects">
-                        <div class="form-group">
-                            <label class="control-label col-sm-4" for="projectNameTwo">Project 2 Name</label>
-                            <div class="col-sm-10">
-                                <textarea type="text" class="form-control" id="projectNameTwo" autocomplete="off"
-                                    formControlName="projectNameTwo" minlength=20 maxlength=500 rows="3"
-                                    placeholder="A very brief description of the project  (e.g. The project involved creating a website for an e-commerce brand.)"></textarea>
+                    <div formArrayName="projects">
+                        <!-- <div *ngIf="addMoreProjects"> -->
+                        <div *ngFor="let project of projectsFormGroup.controls; let i = index;">
+                            <div [formGroupName]="i">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6" for="projectNameOne">Project {{i+1}}
+                                        Name</label>
+                                    <div class="col-sm-10">
+                                        <textarea type="text" class="form-control" id="projectNameOne"
+                                            autocomplete="off" minlength=20 maxlength=500 rows="3"
+                                            placeholder="A very brief description of the project you have worked on"
+                                            formControlName="projectName"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6" for="roleInProjectOne">Role in the
+                                        Project</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="roleInProjectOne"
+                                            placeholder="Role in the project" autocomplete="off"
+                                            formControlName="roleInProject">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-8" for="projOneDuration">Duration</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="projOneDuration"
+                                            placeholder="Enter with months/years" autocomplete="off"
+                                            formControlName="projectDuration">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-7 hideProjectIcons" *ngIf="moreThanOneProject">
+                                <i class="bi bi-dash" (click)="removeProject(i)">Remove Projects</i>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-lg-4" for="roleInProjectTwo">Role in the Project</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="roleInProjectTwo"
-                                    placeholder="Role in Project" autocomplete="off" formControlName="roleInProjectTwo">
-                            </div>
+                        <div class="form-group col-lg-7 hideProjectIcons">
+                            <i class="bi bi-plus" (click)="onAddMoreProject()">Add More Projects</i>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-8" for="projTwoDuration">Duration</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="projTwoDuration"
-                                    placeholder="Enter with months/years" autocomplete="off"
-                                    formControlName="projTwoDuration">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group col-lg-7 hideAddMoreProjects">
-                        <i class="bi bi-plus" (click)="onAddMoreProject()">Add More Projects</i>
                     </div>
                 </div>
             </div>
@@ -214,7 +203,6 @@
                                 formControlName="profileSummary" minlength=20 maxlength=500 rows="6" cols="10"
                                 [(ngModel)]="profileSummaryInPara" (keyup)="checkRequiredFields()"></textarea>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -263,7 +251,7 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-4" for="databaseName">Database</label>
-                        <div class="col-lg-10">{{profileInput.databaseName}}}</div>
+                        <div class="col-lg-10">{{profileInput.databaseName}}</div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-4" for="cloudTechnologiesName">Cloud Technologies</label>
@@ -281,38 +269,28 @@
                     <i class="bi bi-bag-check-fill"></i>
                 </div>
                 <div class="col-sm-6">
-                    <div class="form-group">
-                        <label class="control-label col-sm-6" for="projectNameOne">Project 1 Name</label>
-                        <div class="col-sm-10">{{profileInput.projectNameOne}} </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-6" for="roleInProjectOne">Role in the Project</label>
-                        <div class="col-sm-10">{{profileInput.roleInProjectOne}}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-8" for="projOneDuration">Duration</label>
-                        <div class="col-sm-10">{{profileInput.projOneDuration}}
-                        </div>
-                    </div>
-                    <div *ngIf="addMoreProjects">
-                        <div class="form-group">
-                            <label class="control-label col-sm-4" for="projectNameTwo">Project 2 Name</label>
-                            <div class="col-sm-10">{{profileInput.projectNameTwo}}</div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-lg-4" for="roleInProjectTwo">Role in the Project</label>
-                            <div class="col-sm-10">{{profileInput.roleInProjectTwo}}
+                    <div>
+                        <!-- <div *ngIf="addMoreProjects"> -->
+                        <div *ngFor=" let project of projectData; let i = index;">
+                            <div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6" for="projectName">Project {{i+1}}
+                                        Name</label>
+                                    <div class="col-sm-10">{{project.projectName}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6" for="roleInProjectOne">Role in the
+                                        Project</label>
+                                    <div class="col-sm-10">{{project.roleInProject}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-8" for="projOneDuration">Duration</label>
+                                    <div class="col-sm-10">{{project.projectDuration}} </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-8" for="projTwoDuration">Duration</label>
-                            <div class="col-sm-10">{{profileInput.projTwoDuration}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group col-lg-7 hideAddMoreProjects">
-                        <i class="bi bi-plus">Add More Projects</i>
                     </div>
                 </div>
             </div>

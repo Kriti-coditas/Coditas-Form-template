@@ -1,8 +1,10 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router'
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { formTemplate } from '../form-template/form-template.model'
+import { FormControl, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { formTemplate } from '../model/form-template.model'
+import { formProjectTemplate } from '../model/formProject-template'
 import { ProfileDataService } from '../profile-data.service'
+
 @Component({
   selector: 'app-form-template',
   templateUrl: './form-template.component.html',
@@ -21,8 +23,11 @@ export class FormTemplateComponent implements OnInit {
   previewBtnDisabled = true;
   printBtnDisabled = true;
   onFormEdit: boolean = true;
+  moreThanOneProject: boolean = false;
   profileForm!: FormGroup;
   profileData!: formTemplate[];
+  projectData!: formProjectTemplate[];
+  projectsDetail!: FormArray;
   ngOnInit() {
     this.profileForm = this.formBuilder.group({
       fullName: ['', Validators.required],
@@ -32,12 +37,7 @@ export class FormTemplateComponent implements OnInit {
       databaseName: [''],
       cloudTechnologiesName: [''],
       operatingSystemName: [''],
-      projectNameOne: [''],
-      roleInProjectOne: [''],
-      projOneDuration: ['', Validators.required],
-      projectNameTwo: [''],
-      roleInProjectTwo: [''],
-      projTwoDuration: ['', Validators.required],
+      projects: this.formBuilder.array([this.createprojects()]),
       lastQualificationName: ['', Validators.required],
       nameOfInstitution: ['', Validators.required],
       yearOfPassing: ['', Validators.required],
@@ -45,11 +45,50 @@ export class FormTemplateComponent implements OnInit {
       achievementDescr: [''],
       profileSummary: [''],
     });
+    this.projectsDetail = this.profileForm.get('projects') as FormArray;
+  }
+
+  createprojects(): FormGroup {
+    return this.formBuilder.group({
+      projectName: [''],
+      roleInProject: [''],
+      projectDuration: [''],
+    });
+  }
+
+  get projectsFormGroup() {
+    return this.profileForm.get('projects') as FormArray
+  }
+  getProjectsDataForPreview() {
+    const projectNameOne = this.profileForm.value.projects[0].projectName;
+    const roleInProjectOne = this.profileForm.value.projects[0].roleInProject;
+    const projOneDuration = this.profileForm.value.projects[0].projectDuration;
+    const projectData = new formProjectTemplate(projectNameOne, roleInProjectOne, projOneDuration);
+    this.profileDataService.addProjectData(projectData);
+    if (this.countProjects > 1) {
+      for (let i = 1; i < this.projectsDetail.length; i++) {
+        this.profileDataService.addProjectData(this.projectsDetail.value[i]);
+      }
+    }
+    this.projectData = this.profileDataService.getProjectData();
+    console.log("this.projectData", this.projectData);
   }
   onAddMoreProject() {
-    this.displayPreviewSection = false;
+    this.moreThanOneProject = true;
     this.addMoreProjects = true;
+    this.displayPreviewSection = false;
+    this.projectsDetail.push(this.createprojects());
+    this.countProjects = this.countProjects + 1;
   }
+  removeProject(index: number) {
+    this.projectsDetail.removeAt(index);
+  }
+  getProjectsFormGroup(index: number): FormGroup {
+    this.projectsDetail = this.profileForm.get('projects') as FormArray;
+    const formGroup = this.projectsDetail.controls[index] as FormGroup;
+    return formGroup;
+  }
+
   checkRequiredFields() {
     this.displayPreviewSection = false;
     if (this.profileForm.value.fullName !== undefined && this.profileForm.value.profession !== undefined && this.profileForm.value.profileSummary !== undefined) {
@@ -58,7 +97,7 @@ export class FormTemplateComponent implements OnInit {
       this.errorMessage = "";
     } else {
       this.previewBtnDisabled = true;
-      this.printBtnDisabled=true;
+      this.printBtnDisabled = true;
       this.errorMessage = "Please fill all the Mandatory fields to Print"
     }
   }
@@ -67,8 +106,7 @@ export class FormTemplateComponent implements OnInit {
     this.displayPreviewSection = false;
     this.onFormEdit = true;
   }
-  onPreview() {
-    // console.log("you clicked preview");
+  getProfileDataForPreview() {
     this.displayPreviewSection = true;
     this.onFormEdit = false;
     const fullName = this.profileForm.value.fullName;
@@ -78,12 +116,6 @@ export class FormTemplateComponent implements OnInit {
     const databaseName = this.profileForm.value.databaseName;
     const cloudTechnologiesName = this.profileForm.value.cloudTechnologiesName;
     const operatingSystemName = this.profileForm.value.operatingSystemName;
-    const projectNameOne = this.profileForm.value.projectNameOne;
-    const roleInProjectOne = this.profileForm.value.roleInProjectOne;
-    const projOneDuration = this.profileForm.value.projOneDuration;
-    const projectNameTwo = this.profileForm.value.projectNameTwo;
-    const roleInProjectTwo = this.profileForm.value.roleInProjectTwo;
-    const projTwoDuration = this.profileForm.value.projTwoDuration;
     const lastQualificationName = this.profileForm.value.lastQualificationName;
     const nameOfInstitution = this.profileForm.value.nameOfInstitution;
     const yearOfPassing = this.profileForm.value.yearOfPassing;
@@ -91,23 +123,16 @@ export class FormTemplateComponent implements OnInit {
     const achievementDescr = this.profileForm.value.achievementDescr;
     const profileSummary = this.profileForm.value.profileSummary;
     const newprofileData = new formTemplate(fullName, profession, programmingLangFromework, versionControlName, databaseName, cloudTechnologiesName,
-      operatingSystemName, projectNameOne, roleInProjectOne, projOneDuration, projectNameTwo, roleInProjectTwo, projTwoDuration,
+      operatingSystemName, this.profileDataService.getProjectData(),
       lastQualificationName, nameOfInstitution, yearOfPassing, certifierName, achievementDescr, profileSummary);
     this.profileDataService.addProfileData(newprofileData);
-    this.profileData = this.profileDataService.getProfileData()
-    //  console.log("ProfileDataService",this.profileData);
-    // var toPrint = document.getElementById('www')
-    // console.log("to print",toPrint);
-    // var popupWin=window.open('www', '_blank', 'width=800,height=800,location=no,left=600px');
-    // console.log("to print",popupWin);
-    //  if(popupWin!=null && toPrint!=null){
-    //  popupWin.document.write(toPrint.innerHTML);
-    // popupWin.document.close();
-    //  }
-    // }else{
-    //   this.errorMessage="Fill the required field to Preview"
-    //   this.previewBtnDisabled=true;
-    // }
+    this.profileData = this.profileDataService.getProfileData();
+  }
+
+  onPreview() {
+    // console.log("you clicked preview");
+    this.getProjectsDataForPreview();
+    this.getProfileDataForPreview();
   }
   onReset() {
     this.errorMessage = "";
